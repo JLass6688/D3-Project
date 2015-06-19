@@ -11,12 +11,11 @@ function randomCirclesData(numCircles){
       }
     );
   }
-
   return circles;
 }
 
 
-//  Use this... if you want to...
+//  Explode Function
 function explode(bubble){
   bubble
   .transition()
@@ -26,13 +25,14 @@ function explode(bubble){
 }
 
 
+
 function projectData(data){
 
   var d3_body = d3.select("svg");
 
   var bubbles = d3_body.selectAll('circle')
        .data(data)
-       .enter()  // How many new circles do I need?
+       .enter()
        .append('circle')
        .attr('r', 0)
        .on('mousedown', function(){
@@ -42,7 +42,7 @@ function projectData(data){
  bubbles = d3_body.selectAll('circle')
       .data(data)
       .transition()
-        .duration(100)
+        .duration(1000)
         .attr('r', function(d){ return d.r; })
         .attr('cx', function(d){ return d.cx; })
         .attr('cy', function(d){ return d.cy; })
@@ -66,7 +66,7 @@ window.onload=function(){
   setInterval(function(){
     var numCircles = Math.floor(Math.random() * 100) +10;
     projectData(randomCirclesData(numCircles));
-  }, 1000);
+  }, 1500);
 
 };
 
